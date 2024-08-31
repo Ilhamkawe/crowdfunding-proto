@@ -22,10 +22,6 @@ jobs:
           go-version: '1.20'  # or latest go version
           check-latest: false
           cache: true
-      - name: Set up Protocol Buffers
-        run: |
-            sudo apt-get update
-            sudo apt-get install -y protobuf-compiler
       - name: Generate Go Source
         shell: bash
         run: |
