@@ -12,5 +12,4 @@ service AuthService {
   rpc Login(LoginRequest) returns (User) {}
   rpc UpdateUserInfo(UpdateInfoUserRequest) returns (User) {}
   rpc UploadAvatar(UploadAvatarRequest) returns (BooleanResponse) {}
-
 }
