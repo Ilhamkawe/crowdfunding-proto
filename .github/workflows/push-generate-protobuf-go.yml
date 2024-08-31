@@ -1,0 +1,42 @@
+name: Push - Create & Tag Protobuf - GO
+
+on:
+  push:
+    branches:
+      - "main"
+      - "master"
+
+jobs:
+  generate-protobuf-go:
+    runs-on: Ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_href }}
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+          check-latest: false
+          cache: true
+      - name: Generate Go Source
+        shell: bash
+        run: |
+          make pipeline-build
+#      - name: Generate Go Gateway source
+#        shell: bash
+#        run: |
+#          make pipeline-build-gateway
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        file_pattern: 'protogen/*'
+      - name: Bump version and push tag
+        id: tag_version
+        uses: anothrNick/github-tag-action@1.61.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch

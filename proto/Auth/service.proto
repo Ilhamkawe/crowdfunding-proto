@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package auth;
+
+import "proto/auth/type/user.proto";
+
+option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
+
+
+service AuthService {
+  rpc RegisterUser(RegisterUserRequest) returns (User) {}
+  rpc Login(LoginRequest) returns (User) {}
+  rpc UpdateUserInfo(UpdateInfoUserRequest) returns (User) {}
+  rpc UploadAvatar(uploadAvatarRequest) returns (BooleanResponse) {}
+
+}
