@@ -12,8 +12,8 @@ endif
 
 .PHONY: protoc-go
 protoc-go:
-	protoc --go-opt=module=${GO_MODULE} --go-out=. \
-	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
+	protoc --go_opt=module=${GO_MODULE} --go_out=. \
+	--go_grpc_opt=module=${GO_MODULE} --go_grpc_out=. \
 	./proto/Auth/*.proto
 
 .PHONY: build
