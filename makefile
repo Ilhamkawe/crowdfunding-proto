@@ -16,7 +16,7 @@ endif
 protoc-go:
 	protoc --go_opt=module=${GO_MODULE} --go_out=. \
 	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=. \
-	./proto/Auth/*.proto \
+	./proto/Auth/*.proto ./proto/Auth/type/*.proto \
 
 .PHONY: build
 build: clean protoc-go
