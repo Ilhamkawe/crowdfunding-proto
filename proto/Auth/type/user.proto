@@ -24,6 +24,15 @@ message RegisterUserRequest {
   string password = 4;
 }
 
+message RegisterUserResponse {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string occupation = 4;
+  string imageURL = 5;
+  string Token = 6;
+}
+
 message LoginRequest {
   string email = 1;
   string password = 2;
@@ -51,3 +60,4 @@ message UploadAvatarRequest {
 message BooleanResponse {
   bool status = 1;
 }
+
