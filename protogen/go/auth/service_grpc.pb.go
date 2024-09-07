@@ -31,7 +31,7 @@ const (
 type AuthServiceClient interface {
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*User, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*User, error)
-	UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*User, error)
+	UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
 	UploadAvatar(ctx context.Context, in *UploadAvatarRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
 }
 
@@ -63,9 +63,9 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*User, error) {
+func (c *authServiceClient) UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*BooleanResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(User)
+	out := new(BooleanResponse)
 	err := c.cc.Invoke(ctx, AuthService_UpdateUserInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -89,7 +89,7 @@ func (c *authServiceClient) UploadAvatar(ctx context.Context, in *UploadAvatarRe
 type AuthServiceServer interface {
 	RegisterUser(context.Context, *RegisterUserRequest) (*User, error)
 	Login(context.Context, *LoginRequest) (*User, error)
-	UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*User, error)
+	UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*BooleanResponse, error)
 	UploadAvatar(context.Context, *UploadAvatarRequest) (*BooleanResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
@@ -107,7 +107,7 @@ func (UnimplementedAuthServiceServer) RegisterUser(context.Context, *RegisterUse
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthServiceServer) UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*User, error) {
+func (UnimplementedAuthServiceServer) UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*BooleanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserInfo not implemented")
 }
 func (UnimplementedAuthServiceServer) UploadAvatar(context.Context, *UploadAvatarRequest) (*BooleanResponse, error) {
