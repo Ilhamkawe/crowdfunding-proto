@@ -10,6 +10,6 @@ option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
 service AuthService {
   rpc RegisterUser(RegisterUserRequest) returns (User) {}
   rpc Login(LoginRequest) returns (User) {}
-  rpc UpdateUserInfo(UpdateInfoUserRequest) returns (User) {}
+  rpc UpdateUserInfo(UpdateInfoUserRequest) returns (BooleanResponse) {}
   rpc UploadAvatar(UploadAvatarRequest) returns (BooleanResponse) {}
 }
