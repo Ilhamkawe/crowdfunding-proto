@@ -49,7 +49,7 @@ message ChangePasswordRequest {
 
 message UpdateInfoUserRequest {
   int64 id =1;
-  string email = 2;
+  string name = 2;
   string occupation = 3;
 }
 
