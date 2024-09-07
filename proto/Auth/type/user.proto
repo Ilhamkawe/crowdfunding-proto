@@ -24,7 +24,7 @@ message RegisterUserRequest {
   string password = 4;
 }
 
-message RegisterUserResponse {
+message UserAuthResponse {
   string id = 1;
   string name = 2;
   string email = 3;
@@ -48,8 +48,9 @@ message ChangePasswordRequest {
 }
 
 message UpdateInfoUserRequest {
-  string email = 1;
-  string occupation = 2;
+  int64 id =1;
+  string email = 2;
+  string occupation = 3;
 }
 
 message UploadAvatarRequest {
