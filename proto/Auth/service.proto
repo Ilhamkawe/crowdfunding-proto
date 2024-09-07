@@ -12,4 +12,6 @@ service AuthService {
   rpc Login(LoginRequest) returns (User) {}
   rpc UpdateUserInfo(UpdateInfoUserRequest) returns (BooleanResponse) {}
   rpc UploadAvatar(stream UploadAvatarRequest) returns (BooleanResponse) {}
+  rpc FetchUser(SendID) returns (User) {}
+  rpc ChangePassword(ChangePasswordRequest) returns (BooleanResponse) {}
 }

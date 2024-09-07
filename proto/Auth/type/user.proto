@@ -63,3 +63,7 @@ message BooleanResponse {
   bool status = 1;
 }
 
+message SendID {
+  int64 id = 1;
+}
+
