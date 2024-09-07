@@ -32,7 +32,7 @@ type AuthServiceClient interface {
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*User, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*User, error)
 	UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
-	UploadAvatar(ctx context.Context, in *UploadAvatarRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
+	UploadAvatar(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse], error)
 }
 
 type authServiceClient struct {
@@ -73,15 +73,18 @@ func (c *authServiceClient) UpdateUserInfo(ctx context.Context, in *UpdateInfoUs
 	return out, nil
 }
 
-func (c *authServiceClient) UploadAvatar(ctx context.Context, in *UploadAvatarRequest, opts ...grpc.CallOption) (*BooleanResponse, error) {
+func (c *authServiceClient) UploadAvatar(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(BooleanResponse)
-	err := c.cc.Invoke(ctx, AuthService_UploadAvatar_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &AuthService_ServiceDesc.Streams[0], AuthService_UploadAvatar_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &grpc.GenericClientStream[UploadAvatarRequest, BooleanResponse]{ClientStream: stream}
+	return x, nil
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type AuthService_UploadAvatarClient = grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse]
 
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
@@ -90,7 +93,7 @@ type AuthServiceServer interface {
 	RegisterUser(context.Context, *RegisterUserRequest) (*User, error)
 	Login(context.Context, *LoginRequest) (*User, error)
 	UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*BooleanResponse, error)
-	UploadAvatar(context.Context, *UploadAvatarRequest) (*BooleanResponse, error)
+	UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -110,8 +113,8 @@ func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*Us
 func (UnimplementedAuthServiceServer) UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*BooleanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserInfo not implemented")
 }
-func (UnimplementedAuthServiceServer) UploadAvatar(context.Context, *UploadAvatarRequest) (*BooleanResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadAvatar not implemented")
+func (UnimplementedAuthServiceServer) UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method UploadAvatar not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -188,23 +191,12 @@ func _AuthService_UpdateUserInfo_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_UploadAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadAvatarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).UploadAvatar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_UploadAvatar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).UploadAvatar(ctx, req.(*UploadAvatarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+func _AuthService_UploadAvatar_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(AuthServiceServer).UploadAvatar(&grpc.GenericServerStream[UploadAvatarRequest, BooleanResponse]{ServerStream: stream})
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type AuthService_UploadAvatarServer = grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]
 
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -225,11 +217,13 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "UpdateUserInfo",
 			Handler:    _AuthService_UpdateUserInfo_Handler,
 		},
+	},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "UploadAvatar",
-			Handler:    _AuthService_UploadAvatar_Handler,
+			StreamName:    "UploadAvatar",
+			Handler:       _AuthService_UploadAvatar_Handler,
+			ClientStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "proto/Auth/service.proto",
 }
