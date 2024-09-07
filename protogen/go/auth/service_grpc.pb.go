@@ -23,6 +23,8 @@ const (
 	AuthService_Login_FullMethodName          = "/auth.AuthService/Login"
 	AuthService_UpdateUserInfo_FullMethodName = "/auth.AuthService/UpdateUserInfo"
 	AuthService_UploadAvatar_FullMethodName   = "/auth.AuthService/UploadAvatar"
+	AuthService_FetchUser_FullMethodName      = "/auth.AuthService/FetchUser"
+	AuthService_ChangePassword_FullMethodName = "/auth.AuthService/ChangePassword"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -33,6 +35,8 @@ type AuthServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*User, error)
 	UpdateUserInfo(ctx context.Context, in *UpdateInfoUserRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
 	UploadAvatar(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse], error)
+	FetchUser(ctx context.Context, in *SendID, opts ...grpc.CallOption) (*User, error)
+	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
 }
 
 type authServiceClient struct {
@@ -86,6 +90,26 @@ func (c *authServiceClient) UploadAvatar(ctx context.Context, opts ...grpc.CallO
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type AuthService_UploadAvatarClient = grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse]
 
+func (c *authServiceClient) FetchUser(ctx context.Context, in *SendID, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, AuthService_FetchUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*BooleanResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BooleanResponse)
+	err := c.cc.Invoke(ctx, AuthService_ChangePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -94,6 +118,8 @@ type AuthServiceServer interface {
 	Login(context.Context, *LoginRequest) (*User, error)
 	UpdateUserInfo(context.Context, *UpdateInfoUserRequest) (*BooleanResponse, error)
 	UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error
+	FetchUser(context.Context, *SendID) (*User, error)
+	ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -115,6 +141,12 @@ func (UnimplementedAuthServiceServer) UpdateUserInfo(context.Context, *UpdateInf
 }
 func (UnimplementedAuthServiceServer) UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method UploadAvatar not implemented")
+}
+func (UnimplementedAuthServiceServer) FetchUser(context.Context, *SendID) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchUser not implemented")
+}
+func (UnimplementedAuthServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -198,6 +230,42 @@ func _AuthService_UploadAvatar_Handler(srv interface{}, stream grpc.ServerStream
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type AuthService_UploadAvatarServer = grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]
 
+func _AuthService_FetchUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).FetchUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_FetchUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).FetchUser(ctx, req.(*SendID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ChangePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ChangePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ChangePassword(ctx, req.(*ChangePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -216,6 +284,14 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserInfo",
 			Handler:    _AuthService_UpdateUserInfo_Handler,
+		},
+		{
+			MethodName: "FetchUser",
+			Handler:    _AuthService_FetchUser_Handler,
+		},
+		{
+			MethodName: "ChangePassword",
+			Handler:    _AuthService_ChangePassword_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
