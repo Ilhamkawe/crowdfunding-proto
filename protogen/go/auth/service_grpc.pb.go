@@ -111,7 +111,7 @@ func (c *authServiceClient) ChangePassword(ctx context.Context, in *ChangePasswo
 }
 
 // AuthServiceServer is the server API for AuthService service.
-// All implementations must embed UnimplementedAuthServiceServer
+// All implementations should embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
 	RegisterUser(context.Context, *RegisterUserRequest) (*User, error)
@@ -120,10 +120,9 @@ type AuthServiceServer interface {
 	UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error
 	FetchUser(context.Context, *SendID) (*User, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error)
-	mustEmbedUnimplementedAuthServiceServer()
 }
 
-// UnimplementedAuthServiceServer must be embedded to have
+// UnimplementedAuthServiceServer should be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
@@ -148,8 +147,7 @@ func (UnimplementedAuthServiceServer) FetchUser(context.Context, *SendID) (*User
 func (UnimplementedAuthServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
 }
-func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
-func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedAuthServiceServer) testEmbeddedByValue() {}
 
 // UnsafeAuthServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to AuthServiceServer will
