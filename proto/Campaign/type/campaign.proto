@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package campaign;
+
+option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/campaign";
+import "google/protobuf/timestamp.proto";
+
+message Campaign {
+  int64 id = 1;
+  int64 userId = 2;
+  string name = 3;
+  string shortDescription = 4;
+  string description = 5;
+  int64 backerCount = 6;
+  int64 goalAmount = 7;
+  string cattegory = 8;
+  int64 currentAmount = 9;
+  string slug = 10;
+  string status = 11;
+  string Attachment = 12;
+  bool collectAble = 13;
+  string finishAt = 15;
+  string createdAt = 16;
+  string updatedAt = 17;
+}
+
+message CampaignImage {
+  int64 id = 1;
+  int64 campaignID = 2;
+  string fileName = 3;
+  int32 isPrimary = 4;
+  string createdAt = 16;
+  string updatedAt = 17;
+}
+
+message CampaignReward {
+  int32 id = 1;
+  int32 campaignId = 2;
+  string description = 3;
+  string perks = 4;
+  int32 minDonate = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  google.protobuf.Timestamp updatedAt = 7;
+}
+
+message CampaignActivity {
+  int32 id = 1;
+  int32 campaignId = 2;
+  string name = 3;
+  string shortDescription = 4;
+  string description = 5;
+  string imageUrl = 6;
+  string slug = 7;
+  Campaign campaign = 8;
+  google.protobuf.Timestamp createdAt = 9;
+  google.protobuf.Timestamp updatedAt = 10;
+}
+
+message Cattegory {
+  int32 id = 1;
+  string name = 2;
+}
+
+message SendIDRequest {
+  int32 id = 1;
+}
+
+

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package auth;
+
+import "proto/Campaign/type/campaign.proto";
+
+option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
+
+
+service CampaignService {
+//  rpc GetRewards (SendIDRequest) returns (campaign.CampaignReward) {}
+}
