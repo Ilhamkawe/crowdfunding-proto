@@ -43,8 +43,8 @@ message CheckEmailRequest {
 }
 
 message ChangePasswordRequest {
-  int64 id = 1;
-  string passwordHash = 2;
+  string passwordHash = 1;
+  int64 id = 16;
 }
 
 message UpdateInfoUserRequest {
