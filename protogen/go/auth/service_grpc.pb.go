@@ -8,6 +8,7 @@ package auth
 
 import (
 	context "context"
+	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -25,6 +26,7 @@ const (
 	AuthService_UploadAvatar_FullMethodName   = "/auth.AuthService/UploadAvatar"
 	AuthService_FetchUser_FullMethodName      = "/auth.AuthService/FetchUser"
 	AuthService_ChangePassword_FullMethodName = "/auth.AuthService/ChangePassword"
+	AuthService_Logout_FullMethodName         = "/auth.AuthService/Logout"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -37,6 +39,7 @@ type AuthServiceClient interface {
 	UploadAvatar(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadAvatarRequest, BooleanResponse], error)
 	FetchUser(ctx context.Context, in *SendID, opts ...grpc.CallOption) (*User, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*BooleanResponse, error)
+	Logout(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*BooleanResponse, error)
 }
 
 type authServiceClient struct {
@@ -110,6 +113,16 @@ func (c *authServiceClient) ChangePassword(ctx context.Context, in *ChangePasswo
 	return out, nil
 }
 
+func (c *authServiceClient) Logout(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*BooleanResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BooleanResponse)
+	err := c.cc.Invoke(ctx, AuthService_Logout_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations should embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -120,6 +133,7 @@ type AuthServiceServer interface {
 	UploadAvatar(grpc.ClientStreamingServer[UploadAvatarRequest, BooleanResponse]) error
 	FetchUser(context.Context, *SendID) (*User, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error)
+	Logout(context.Context, *empty.Empty) (*BooleanResponse, error)
 }
 
 // UnimplementedAuthServiceServer should be embedded to have
@@ -146,6 +160,9 @@ func (UnimplementedAuthServiceServer) FetchUser(context.Context, *SendID) (*User
 }
 func (UnimplementedAuthServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*BooleanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
+}
+func (UnimplementedAuthServiceServer) Logout(context.Context, *empty.Empty) (*BooleanResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedAuthServiceServer) testEmbeddedByValue() {}
 
@@ -264,6 +281,24 @@ func _AuthService_ChangePassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_Logout_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).Logout(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -290,6 +325,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangePassword",
 			Handler:    _AuthService_ChangePassword_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _AuthService_Logout_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
