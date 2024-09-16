@@ -3,6 +3,7 @@ syntax = "proto3";
 package auth;
 
 import "proto/Auth/type/user.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
 
@@ -14,4 +15,5 @@ service AuthService {
   rpc UploadAvatar(stream UploadAvatarRequest) returns (BooleanResponse) {}
   rpc FetchUser(SendID) returns (User) {}
   rpc ChangePassword(ChangePasswordRequest) returns (BooleanResponse) {}
+  rpc Logout(google.protobuf.Empty) returns (BooleanResponse) {}
 }
