@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package user;
+option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/user";\
+
+message User {
+  string id = 1;
+  string name = 2;
+  string occupation = 3;
+  string email = 4;
+  string passwordHash = 5;
+  string avatarFileName = 6;
+  string role  = 7;
+  string token = 8;
+  string createdAt = 16;
+  string updatedAt = 17;
+}

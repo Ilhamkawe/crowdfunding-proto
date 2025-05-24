@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-import "proto/Auth/type/user.proto";
+import "Protobuf/proto/Auth/type/user.proto";
 import "google/protobuf/empty.proto";
 
 option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
