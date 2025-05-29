@@ -24,6 +24,10 @@ message Campaign {
   string updatedAt = 17;
 }
 
+message ListCampaign {
+  repeated Campaign data = 1;
+}
+
 message CampaignImage {
   int64 id = 1;
   int64 campaignID = 2;
@@ -61,8 +65,115 @@ message Cattegory {
   string name = 2;
 }
 
+message ListCattegory {
+  repeated Cattegory data = 1;
+}
+
 message SendIDRequest {
   int32 id = 1;
 }
 
+message SendLimitRequest {
+  int32 limit = 1;
+}
+
+message SendUserIDRequest {
+  int32 userId = 1;
+}
+
+message CreateCampaignInput {
+  string Name = 1;
+  string ShortDescription = 2;
+  string Description = 3;
+  string GoalAmount = 4;
+  string Cattegory = 5;
+  string FinishAt = 6;
+  string Path = 7;
+  int32 UserId = 8;
+}
+
+message UpdateAttachmentInput {
+  string CampaignID = 1;
+  string Action = 2;
+  string Path = 3;
+  int32 UserId = 4;
+}
+
+message UpdateCampaignInput{
+  int32 Id = 1;
+  string Name = 2;
+  string ShortDescription = 3;
+  string Description = 4;
+  string GoalAmount = 5;
+  string Cattegory = 6;
+  string UserId = 7;
+}
+
+message CreateCampaignImageInput{
+  int32 CampaignId = 1;
+  bool IsPrimary = 2;
+  int32 UserId = 3;
+  bytes chunk = 4;
+}
+
+message CreateCampaignRewardInput{
+  int32 CampaignId = 1;
+  string Description = 2;
+  string Perks = 3;
+  string MinDonate = 4;
+  string UserId = 5;
+}
+
+message DeleteCampaignRewardInput{
+  int32 CampaignId = 1;
+  int32 RewardId = 2;
+  string UserId = 3;
+}
+
+message DeleteCampaignImageInput{
+  int32 CampaignId = 1;
+  int32 ImageId = 2;
+  string UserId = 3;
+}
+
+message BooleanResponse{
+  string message = 1;
+  bool success = 2;
+}
+
+message CreateCampaignActivityInput{
+  int32 CampaignId = 1;
+  string Name = 2;
+  string ShortDescription = 3;
+  string Description = 4;
+  string ImageUrl = 5;
+  bytes chunk = 6;
+  string UserId = 7;
+}
+
+message UpdateCampaignActivityInput{
+  int32 Id = 1;
+  int32 CampaignId = 2;
+  string Name = 3;
+  string ShortDescription = 4;
+  string Description = 5;
+  string ImageUrl = 6;
+  bytes chunk = 7;
+  string UserId = 8;
+}
+
+message DeleteCampaignActivityInput{
+  int32 CampaignId = 1;
+  int32 ActivityId = 2;
+  string UserId = 3;
+}
+
+message GetCampaignAcitityInput{
+  int32 Id = 1;
+  int32 CampaignId = 2;
+}
+
+message SendCattegoryInput{
+  string Name = 1;
+}
 

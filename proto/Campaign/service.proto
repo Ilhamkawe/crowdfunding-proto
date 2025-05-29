@@ -3,10 +3,31 @@ syntax = "proto3";
 package auth;
 
 import "proto/Campaign/type/campaign.proto";
-
+import "google/protobuf/empty.proto";
 option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
 
 
 service CampaignService {
-//  rpc GetRewards (SendIDRequest) returns (campaign.CampaignReward) {}
+  rpc GetRewards (campaign.SendIDRequest) returns (campaign.CampaignReward) {}
+  rpc SearchCampaign(google.protobuf.Empty) returns (campaign.ListCampaign){}
+  rpc Limit(campaign.SendLimitRequest) returns (campaign.ListCampaign) {}
+  rpc GetCampaigns(campaign.SendUserIDRequest) returns (campaign.ListCampaign) {}
+  rpc GetCampaign(campaign.SendIDRequest) returns (campaign.Campaign) {}
+  rpc CreateCampaign(campaign.CreateCampaignInput) returns (campaign.Campaign) {}
+  rpc UpdateAttachment(campaign.UpdateAttachmentInput) returns (campaign.Campaign){}
+  rpc GetUserCampaignByID(campaign.SendIDRequest) returns (campaign.Campaign) {}
+  rpc UpdateCampaign(campaign.UpdateCampaignInput) returns (campaign.Campaign) {}
+  rpc CreateCampaignImage(campaign.CreateCampaignInput) returns (campaign.Campaign) {}
+  rpc CreateCampaignReward(campaign.CreateCampaignRewardInput) returns (campaign.Campaign) {}
+  rpc DeleteReward(campaign.DeleteCampaignRewardInput) returns (campaign.BooleanResponse) {}
+  rpc DeleteImage(campaign.DeleteCampaignImageInput) returns (campaign.BooleanResponse) {}
+  rpc CreateActivity(campaign.CreateCampaignActivityInput) returns (campaign.CampaignActivity) {}
+  rpc UpdateActivity(campaign.UpdateCampaignActivityInput) returns (campaign.CampaignActivity) {}
+  rpc DeleteActivity(campaign.DeleteCampaignActivityInput) returns (campaign.CampaignActivity) {}
+  rpc FindActivity(campaign.GetCampaignAcitityInput) returns (campaign.CampaignActivity) {}
+  rpc FindActivityByUser(campaign.GetCampaignAcitityInput) returns (campaign.CampaignActivity) {}
+  rpc FindAllActivityByCampaignID(campaign.SendIDRequest) returns (campaign.CampaignActivity) {}
+  rpc CreateCattegory(campaign.SendCattegoryInput) returns (campaign.Cattegory) {}
+  rpc DeleteCattegory(campaign.SendIDRequest) returns (campaign.BooleanResponse) {}
+  rpc FindAllCattegory(google.protobuf.Empty) returns (campaign.)
 }
