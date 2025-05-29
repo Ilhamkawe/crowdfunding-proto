@@ -29,5 +29,5 @@ service CampaignService {
   rpc FindAllActivityByCampaignID(campaign.SendIDRequest) returns (campaign.CampaignActivity) {}
   rpc CreateCattegory(campaign.SendCattegoryInput) returns (campaign.Cattegory) {}
   rpc DeleteCattegory(campaign.SendIDRequest) returns (campaign.BooleanResponse) {}
-  rpc FindAllCattegory(google.protobuf.Empty) returns (campaign.)
+  rpc FindAllCattegory(google.protobuf.Empty) returns (campaign.ListCattegory) {}
 }
