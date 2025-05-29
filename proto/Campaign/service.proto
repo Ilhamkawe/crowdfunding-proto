@@ -4,7 +4,7 @@ package auth;
 
 import "proto/Campaign/type/campaign.proto";
 import "google/protobuf/empty.proto";
-option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/auth";
+option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/campaign";
 
 
 service CampaignService {
