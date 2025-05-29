@@ -17,6 +17,7 @@ protoc-go:
 	protoc --go_opt=module=${GO_MODULE} --go_out=. \
 	--go-grpc_opt=module=${GO_MODULE} --go-grpc_out=require_unimplemented_servers=false:. \
 	./proto/Auth/*.proto ./proto/Auth/type/*.proto \
+	./proto/Campaign/*.proto ./proto/Campaign/type/*.proto \
 
 .PHONY: build
 build: clean protoc-go
