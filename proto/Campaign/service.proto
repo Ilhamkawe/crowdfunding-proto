@@ -8,7 +8,7 @@ option go_package = "github.com/Ilhamkawe/crowdfunding-proto/protogen/go/campaig
 
 
 service CampaignService {
-  rpc GetRewards (campaign.SendIDRequest) returns (campaign.CampaignReward) {}
+  rpc GetRewards (campaign.SendIDRequest) returns (campaign.ListCampaignReward) {}
   rpc SearchCampaign(google.protobuf.Empty) returns (campaign.ListCampaign){}
   rpc Limit(campaign.SendLimitRequest) returns (campaign.ListCampaign) {}
   rpc GetCampaigns(campaign.SendUserIDRequest) returns (campaign.ListCampaign) {}
