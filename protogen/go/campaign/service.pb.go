@@ -25,10 +25,10 @@ var File_proto_Campaign_service_proto protoreflect.FileDescriptor
 
 const file_proto_Campaign_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1cproto/Campaign/service.proto\x12\x04auth\x1a\"proto/Campaign/type/campaign.proto\x1a\x1bgoogle/protobuf/empty.proto2\x97\r\n" +
-	"\x0fCampaignService\x12A\n" +
+	"\x1cproto/Campaign/service.proto\x12\x04auth\x1a\"proto/Campaign/type/campaign.proto\x1a\x1bgoogle/protobuf/empty.proto2\x9b\r\n" +
+	"\x0fCampaignService\x12E\n" +
 	"\n" +
-	"GetRewards\x12\x17.campaign.SendIDRequest\x1a\x18.campaign.CampaignReward\"\x00\x12B\n" +
+	"GetRewards\x12\x17.campaign.SendIDRequest\x1a\x1c.campaign.ListCampaignReward\"\x00\x12B\n" +
 	"\x0eSearchCampaign\x12\x16.google.protobuf.Empty\x1a\x16.campaign.ListCampaign\"\x00\x12=\n" +
 	"\x05Limit\x12\x1a.campaign.SendLimitRequest\x1a\x16.campaign.ListCampaign\"\x00\x12E\n" +
 	"\fGetCampaigns\x12\x1b.campaign.SendUserIDRequest\x1a\x16.campaign.ListCampaign\"\x00\x12<\n" +
@@ -67,7 +67,7 @@ var file_proto_Campaign_service_proto_goTypes = []any{
 	(*DeleteCampaignActivityInput)(nil), // 12: campaign.DeleteCampaignActivityInput
 	(*GetCampaignAcitityInput)(nil),     // 13: campaign.GetCampaignAcitityInput
 	(*SendCattegoryInput)(nil),          // 14: campaign.SendCattegoryInput
-	(*CampaignReward)(nil),              // 15: campaign.CampaignReward
+	(*ListCampaignReward)(nil),          // 15: campaign.ListCampaignReward
 	(*ListCampaign)(nil),                // 16: campaign.ListCampaign
 	(*Campaign)(nil),                    // 17: campaign.Campaign
 	(*BooleanResponse)(nil),             // 18: campaign.BooleanResponse
@@ -98,7 +98,7 @@ var file_proto_Campaign_service_proto_depIdxs = []int32{
 	14, // 19: auth.CampaignService.CreateCattegory:input_type -> campaign.SendCattegoryInput
 	0,  // 20: auth.CampaignService.DeleteCattegory:input_type -> campaign.SendIDRequest
 	1,  // 21: auth.CampaignService.FindAllCattegory:input_type -> google.protobuf.Empty
-	15, // 22: auth.CampaignService.GetRewards:output_type -> campaign.CampaignReward
+	15, // 22: auth.CampaignService.GetRewards:output_type -> campaign.ListCampaignReward
 	16, // 23: auth.CampaignService.SearchCampaign:output_type -> campaign.ListCampaign
 	16, // 24: auth.CampaignService.Limit:output_type -> campaign.ListCampaign
 	16, // 25: auth.CampaignService.GetCampaigns:output_type -> campaign.ListCampaign

@@ -406,6 +406,50 @@ func (x *CampaignReward) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type ListCampaignReward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Data          []*CampaignReward      `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCampaignReward) Reset() {
+	*x = ListCampaignReward{}
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCampaignReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCampaignReward) ProtoMessage() {}
+
+func (x *ListCampaignReward) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCampaignReward.ProtoReflect.Descriptor instead.
+func (*ListCampaignReward) Descriptor() ([]byte, []int) {
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListCampaignReward) GetData() []*CampaignReward {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 type CampaignActivity struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	Id               int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -424,7 +468,7 @@ type CampaignActivity struct {
 
 func (x *CampaignActivity) Reset() {
 	*x = CampaignActivity{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[4]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -436,7 +480,7 @@ func (x *CampaignActivity) String() string {
 func (*CampaignActivity) ProtoMessage() {}
 
 func (x *CampaignActivity) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[4]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +493,7 @@ func (x *CampaignActivity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CampaignActivity.ProtoReflect.Descriptor instead.
 func (*CampaignActivity) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{4}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CampaignActivity) GetId() int32 {
@@ -522,6 +566,50 @@ func (x *CampaignActivity) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type ListCampaignActivity struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Data          []*CampaignActivity    `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCampaignActivity) Reset() {
+	*x = ListCampaignActivity{}
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCampaignActivity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCampaignActivity) ProtoMessage() {}
+
+func (x *ListCampaignActivity) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCampaignActivity.ProtoReflect.Descriptor instead.
+func (*ListCampaignActivity) Descriptor() ([]byte, []int) {
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListCampaignActivity) GetData() []*CampaignActivity {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 type Cattegory struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -532,7 +620,7 @@ type Cattegory struct {
 
 func (x *Cattegory) Reset() {
 	*x = Cattegory{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[5]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -544,7 +632,7 @@ func (x *Cattegory) String() string {
 func (*Cattegory) ProtoMessage() {}
 
 func (x *Cattegory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[5]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -557,7 +645,7 @@ func (x *Cattegory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Cattegory.ProtoReflect.Descriptor instead.
 func (*Cattegory) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{5}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Cattegory) GetId() int32 {
@@ -583,7 +671,7 @@ type ListCattegory struct {
 
 func (x *ListCattegory) Reset() {
 	*x = ListCattegory{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[6]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -595,7 +683,7 @@ func (x *ListCattegory) String() string {
 func (*ListCattegory) ProtoMessage() {}
 
 func (x *ListCattegory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[6]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -608,7 +696,7 @@ func (x *ListCattegory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCattegory.ProtoReflect.Descriptor instead.
 func (*ListCattegory) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{6}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListCattegory) GetData() []*Cattegory {
@@ -627,7 +715,7 @@ type SendIDRequest struct {
 
 func (x *SendIDRequest) Reset() {
 	*x = SendIDRequest{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[7]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -639,7 +727,7 @@ func (x *SendIDRequest) String() string {
 func (*SendIDRequest) ProtoMessage() {}
 
 func (x *SendIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[7]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -652,7 +740,7 @@ func (x *SendIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendIDRequest.ProtoReflect.Descriptor instead.
 func (*SendIDRequest) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{7}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SendIDRequest) GetId() int32 {
@@ -671,7 +759,7 @@ type SendLimitRequest struct {
 
 func (x *SendLimitRequest) Reset() {
 	*x = SendLimitRequest{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[8]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -683,7 +771,7 @@ func (x *SendLimitRequest) String() string {
 func (*SendLimitRequest) ProtoMessage() {}
 
 func (x *SendLimitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[8]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -696,7 +784,7 @@ func (x *SendLimitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendLimitRequest.ProtoReflect.Descriptor instead.
 func (*SendLimitRequest) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{8}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SendLimitRequest) GetLimit() int32 {
@@ -715,7 +803,7 @@ type SendUserIDRequest struct {
 
 func (x *SendUserIDRequest) Reset() {
 	*x = SendUserIDRequest{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[9]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -727,7 +815,7 @@ func (x *SendUserIDRequest) String() string {
 func (*SendUserIDRequest) ProtoMessage() {}
 
 func (x *SendUserIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[9]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -740,7 +828,7 @@ func (x *SendUserIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendUserIDRequest.ProtoReflect.Descriptor instead.
 func (*SendUserIDRequest) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{9}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SendUserIDRequest) GetUserId() int32 {
@@ -766,7 +854,7 @@ type CreateCampaignInput struct {
 
 func (x *CreateCampaignInput) Reset() {
 	*x = CreateCampaignInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[10]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -778,7 +866,7 @@ func (x *CreateCampaignInput) String() string {
 func (*CreateCampaignInput) ProtoMessage() {}
 
 func (x *CreateCampaignInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[10]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -791,7 +879,7 @@ func (x *CreateCampaignInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCampaignInput.ProtoReflect.Descriptor instead.
 func (*CreateCampaignInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{10}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CreateCampaignInput) GetName() string {
@@ -862,7 +950,7 @@ type UpdateAttachmentInput struct {
 
 func (x *UpdateAttachmentInput) Reset() {
 	*x = UpdateAttachmentInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[11]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -874,7 +962,7 @@ func (x *UpdateAttachmentInput) String() string {
 func (*UpdateAttachmentInput) ProtoMessage() {}
 
 func (x *UpdateAttachmentInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[11]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -887,7 +975,7 @@ func (x *UpdateAttachmentInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAttachmentInput.ProtoReflect.Descriptor instead.
 func (*UpdateAttachmentInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{11}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateAttachmentInput) GetCampaignID() string {
@@ -933,7 +1021,7 @@ type UpdateCampaignInput struct {
 
 func (x *UpdateCampaignInput) Reset() {
 	*x = UpdateCampaignInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[12]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -945,7 +1033,7 @@ func (x *UpdateCampaignInput) String() string {
 func (*UpdateCampaignInput) ProtoMessage() {}
 
 func (x *UpdateCampaignInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[12]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -958,7 +1046,7 @@ func (x *UpdateCampaignInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCampaignInput.ProtoReflect.Descriptor instead.
 func (*UpdateCampaignInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{12}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateCampaignInput) GetId() int32 {
@@ -1022,7 +1110,7 @@ type CreateCampaignImageInput struct {
 
 func (x *CreateCampaignImageInput) Reset() {
 	*x = CreateCampaignImageInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[13]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +1122,7 @@ func (x *CreateCampaignImageInput) String() string {
 func (*CreateCampaignImageInput) ProtoMessage() {}
 
 func (x *CreateCampaignImageInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[13]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +1135,7 @@ func (x *CreateCampaignImageInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCampaignImageInput.ProtoReflect.Descriptor instead.
 func (*CreateCampaignImageInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{13}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CreateCampaignImageInput) GetCampaignId() int32 {
@@ -1091,7 +1179,7 @@ type CreateCampaignRewardInput struct {
 
 func (x *CreateCampaignRewardInput) Reset() {
 	*x = CreateCampaignRewardInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[14]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1103,7 +1191,7 @@ func (x *CreateCampaignRewardInput) String() string {
 func (*CreateCampaignRewardInput) ProtoMessage() {}
 
 func (x *CreateCampaignRewardInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[14]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1116,7 +1204,7 @@ func (x *CreateCampaignRewardInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCampaignRewardInput.ProtoReflect.Descriptor instead.
 func (*CreateCampaignRewardInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{14}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CreateCampaignRewardInput) GetCampaignId() int32 {
@@ -1165,7 +1253,7 @@ type DeleteCampaignRewardInput struct {
 
 func (x *DeleteCampaignRewardInput) Reset() {
 	*x = DeleteCampaignRewardInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[15]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1177,7 +1265,7 @@ func (x *DeleteCampaignRewardInput) String() string {
 func (*DeleteCampaignRewardInput) ProtoMessage() {}
 
 func (x *DeleteCampaignRewardInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[15]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1190,7 +1278,7 @@ func (x *DeleteCampaignRewardInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCampaignRewardInput.ProtoReflect.Descriptor instead.
 func (*DeleteCampaignRewardInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{15}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteCampaignRewardInput) GetCampaignId() int32 {
@@ -1225,7 +1313,7 @@ type DeleteCampaignImageInput struct {
 
 func (x *DeleteCampaignImageInput) Reset() {
 	*x = DeleteCampaignImageInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[16]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1237,7 +1325,7 @@ func (x *DeleteCampaignImageInput) String() string {
 func (*DeleteCampaignImageInput) ProtoMessage() {}
 
 func (x *DeleteCampaignImageInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[16]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1250,7 +1338,7 @@ func (x *DeleteCampaignImageInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCampaignImageInput.ProtoReflect.Descriptor instead.
 func (*DeleteCampaignImageInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{16}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteCampaignImageInput) GetCampaignId() int32 {
@@ -1284,7 +1372,7 @@ type BooleanResponse struct {
 
 func (x *BooleanResponse) Reset() {
 	*x = BooleanResponse{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[17]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1296,7 +1384,7 @@ func (x *BooleanResponse) String() string {
 func (*BooleanResponse) ProtoMessage() {}
 
 func (x *BooleanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[17]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1309,7 +1397,7 @@ func (x *BooleanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BooleanResponse.ProtoReflect.Descriptor instead.
 func (*BooleanResponse) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{17}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *BooleanResponse) GetMessage() string {
@@ -1341,7 +1429,7 @@ type CreateCampaignActivityInput struct {
 
 func (x *CreateCampaignActivityInput) Reset() {
 	*x = CreateCampaignActivityInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[18]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1353,7 +1441,7 @@ func (x *CreateCampaignActivityInput) String() string {
 func (*CreateCampaignActivityInput) ProtoMessage() {}
 
 func (x *CreateCampaignActivityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[18]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1366,7 +1454,7 @@ func (x *CreateCampaignActivityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCampaignActivityInput.ProtoReflect.Descriptor instead.
 func (*CreateCampaignActivityInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{18}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateCampaignActivityInput) GetCampaignId() int32 {
@@ -1434,7 +1522,7 @@ type UpdateCampaignActivityInput struct {
 
 func (x *UpdateCampaignActivityInput) Reset() {
 	*x = UpdateCampaignActivityInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[19]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1446,7 +1534,7 @@ func (x *UpdateCampaignActivityInput) String() string {
 func (*UpdateCampaignActivityInput) ProtoMessage() {}
 
 func (x *UpdateCampaignActivityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[19]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1459,7 +1547,7 @@ func (x *UpdateCampaignActivityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCampaignActivityInput.ProtoReflect.Descriptor instead.
 func (*UpdateCampaignActivityInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{19}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateCampaignActivityInput) GetId() int32 {
@@ -1529,7 +1617,7 @@ type DeleteCampaignActivityInput struct {
 
 func (x *DeleteCampaignActivityInput) Reset() {
 	*x = DeleteCampaignActivityInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[20]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1541,7 +1629,7 @@ func (x *DeleteCampaignActivityInput) String() string {
 func (*DeleteCampaignActivityInput) ProtoMessage() {}
 
 func (x *DeleteCampaignActivityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[20]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1554,7 +1642,7 @@ func (x *DeleteCampaignActivityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCampaignActivityInput.ProtoReflect.Descriptor instead.
 func (*DeleteCampaignActivityInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{20}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *DeleteCampaignActivityInput) GetCampaignId() int32 {
@@ -1588,7 +1676,7 @@ type GetCampaignAcitityInput struct {
 
 func (x *GetCampaignAcitityInput) Reset() {
 	*x = GetCampaignAcitityInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[21]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1600,7 +1688,7 @@ func (x *GetCampaignAcitityInput) String() string {
 func (*GetCampaignAcitityInput) ProtoMessage() {}
 
 func (x *GetCampaignAcitityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[21]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1613,7 +1701,7 @@ func (x *GetCampaignAcitityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCampaignAcitityInput.ProtoReflect.Descriptor instead.
 func (*GetCampaignAcitityInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{21}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetCampaignAcitityInput) GetId() int32 {
@@ -1639,7 +1727,7 @@ type SendCattegoryInput struct {
 
 func (x *SendCattegoryInput) Reset() {
 	*x = SendCattegoryInput{}
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[22]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1651,7 +1739,7 @@ func (x *SendCattegoryInput) String() string {
 func (*SendCattegoryInput) ProtoMessage() {}
 
 func (x *SendCattegoryInput) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[22]
+	mi := &file_proto_Campaign_type_campaign_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1664,7 +1752,7 @@ func (x *SendCattegoryInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendCattegoryInput.ProtoReflect.Descriptor instead.
 func (*SendCattegoryInput) Descriptor() ([]byte, []int) {
-	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{22}
+	return file_proto_Campaign_type_campaign_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SendCattegoryInput) GetName() string {
@@ -1721,7 +1809,9 @@ const file_proto_Campaign_type_campaign_proto_rawDesc = "" +
 	"\x05perks\x18\x04 \x01(\tR\x05perks\x12\x1c\n" +
 	"\tminDonate\x18\x05 \x01(\x05R\tminDonate\x128\n" +
 	"\tcreatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf8\x02\n" +
+	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"B\n" +
+	"\x12ListCampaignReward\x12,\n" +
+	"\x04data\x18\x01 \x03(\v2\x18.campaign.CampaignRewardR\x04data\"\xf8\x02\n" +
 	"\x10CampaignActivity\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1e\n" +
 	"\n" +
@@ -1735,7 +1825,9 @@ const file_proto_Campaign_type_campaign_proto_rawDesc = "" +
 	"\bcampaign\x18\b \x01(\v2\x12.campaign.CampaignR\bcampaign\x128\n" +
 	"\tcreatedAt\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
 	"\tupdatedAt\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"/\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"F\n" +
+	"\x14ListCampaignActivity\x12.\n" +
+	"\x04data\x18\x01 \x03(\v2\x1a.campaign.CampaignActivityR\x04data\"/\n" +
 	"\tCattegory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"8\n" +
@@ -1854,46 +1946,50 @@ func file_proto_Campaign_type_campaign_proto_rawDescGZIP() []byte {
 	return file_proto_Campaign_type_campaign_proto_rawDescData
 }
 
-var file_proto_Campaign_type_campaign_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_proto_Campaign_type_campaign_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_proto_Campaign_type_campaign_proto_goTypes = []any{
 	(*Campaign)(nil),                    // 0: campaign.Campaign
 	(*ListCampaign)(nil),                // 1: campaign.ListCampaign
 	(*CampaignImage)(nil),               // 2: campaign.CampaignImage
 	(*CampaignReward)(nil),              // 3: campaign.CampaignReward
-	(*CampaignActivity)(nil),            // 4: campaign.CampaignActivity
-	(*Cattegory)(nil),                   // 5: campaign.Cattegory
-	(*ListCattegory)(nil),               // 6: campaign.ListCattegory
-	(*SendIDRequest)(nil),               // 7: campaign.SendIDRequest
-	(*SendLimitRequest)(nil),            // 8: campaign.SendLimitRequest
-	(*SendUserIDRequest)(nil),           // 9: campaign.SendUserIDRequest
-	(*CreateCampaignInput)(nil),         // 10: campaign.CreateCampaignInput
-	(*UpdateAttachmentInput)(nil),       // 11: campaign.UpdateAttachmentInput
-	(*UpdateCampaignInput)(nil),         // 12: campaign.UpdateCampaignInput
-	(*CreateCampaignImageInput)(nil),    // 13: campaign.CreateCampaignImageInput
-	(*CreateCampaignRewardInput)(nil),   // 14: campaign.CreateCampaignRewardInput
-	(*DeleteCampaignRewardInput)(nil),   // 15: campaign.DeleteCampaignRewardInput
-	(*DeleteCampaignImageInput)(nil),    // 16: campaign.DeleteCampaignImageInput
-	(*BooleanResponse)(nil),             // 17: campaign.BooleanResponse
-	(*CreateCampaignActivityInput)(nil), // 18: campaign.CreateCampaignActivityInput
-	(*UpdateCampaignActivityInput)(nil), // 19: campaign.UpdateCampaignActivityInput
-	(*DeleteCampaignActivityInput)(nil), // 20: campaign.DeleteCampaignActivityInput
-	(*GetCampaignAcitityInput)(nil),     // 21: campaign.GetCampaignAcitityInput
-	(*SendCattegoryInput)(nil),          // 22: campaign.SendCattegoryInput
-	(*timestamppb.Timestamp)(nil),       // 23: google.protobuf.Timestamp
+	(*ListCampaignReward)(nil),          // 4: campaign.ListCampaignReward
+	(*CampaignActivity)(nil),            // 5: campaign.CampaignActivity
+	(*ListCampaignActivity)(nil),        // 6: campaign.ListCampaignActivity
+	(*Cattegory)(nil),                   // 7: campaign.Cattegory
+	(*ListCattegory)(nil),               // 8: campaign.ListCattegory
+	(*SendIDRequest)(nil),               // 9: campaign.SendIDRequest
+	(*SendLimitRequest)(nil),            // 10: campaign.SendLimitRequest
+	(*SendUserIDRequest)(nil),           // 11: campaign.SendUserIDRequest
+	(*CreateCampaignInput)(nil),         // 12: campaign.CreateCampaignInput
+	(*UpdateAttachmentInput)(nil),       // 13: campaign.UpdateAttachmentInput
+	(*UpdateCampaignInput)(nil),         // 14: campaign.UpdateCampaignInput
+	(*CreateCampaignImageInput)(nil),    // 15: campaign.CreateCampaignImageInput
+	(*CreateCampaignRewardInput)(nil),   // 16: campaign.CreateCampaignRewardInput
+	(*DeleteCampaignRewardInput)(nil),   // 17: campaign.DeleteCampaignRewardInput
+	(*DeleteCampaignImageInput)(nil),    // 18: campaign.DeleteCampaignImageInput
+	(*BooleanResponse)(nil),             // 19: campaign.BooleanResponse
+	(*CreateCampaignActivityInput)(nil), // 20: campaign.CreateCampaignActivityInput
+	(*UpdateCampaignActivityInput)(nil), // 21: campaign.UpdateCampaignActivityInput
+	(*DeleteCampaignActivityInput)(nil), // 22: campaign.DeleteCampaignActivityInput
+	(*GetCampaignAcitityInput)(nil),     // 23: campaign.GetCampaignAcitityInput
+	(*SendCattegoryInput)(nil),          // 24: campaign.SendCattegoryInput
+	(*timestamppb.Timestamp)(nil),       // 25: google.protobuf.Timestamp
 }
 var file_proto_Campaign_type_campaign_proto_depIdxs = []int32{
 	0,  // 0: campaign.ListCampaign.data:type_name -> campaign.Campaign
-	23, // 1: campaign.CampaignReward.createdAt:type_name -> google.protobuf.Timestamp
-	23, // 2: campaign.CampaignReward.updatedAt:type_name -> google.protobuf.Timestamp
-	0,  // 3: campaign.CampaignActivity.campaign:type_name -> campaign.Campaign
-	23, // 4: campaign.CampaignActivity.createdAt:type_name -> google.protobuf.Timestamp
-	23, // 5: campaign.CampaignActivity.updatedAt:type_name -> google.protobuf.Timestamp
-	5,  // 6: campaign.ListCattegory.data:type_name -> campaign.Cattegory
-	7,  // [7:7] is the sub-list for method output_type
-	7,  // [7:7] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	25, // 1: campaign.CampaignReward.createdAt:type_name -> google.protobuf.Timestamp
+	25, // 2: campaign.CampaignReward.updatedAt:type_name -> google.protobuf.Timestamp
+	3,  // 3: campaign.ListCampaignReward.data:type_name -> campaign.CampaignReward
+	0,  // 4: campaign.CampaignActivity.campaign:type_name -> campaign.Campaign
+	25, // 5: campaign.CampaignActivity.createdAt:type_name -> google.protobuf.Timestamp
+	25, // 6: campaign.CampaignActivity.updatedAt:type_name -> google.protobuf.Timestamp
+	5,  // 7: campaign.ListCampaignActivity.data:type_name -> campaign.CampaignActivity
+	7,  // 8: campaign.ListCattegory.data:type_name -> campaign.Cattegory
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_proto_Campaign_type_campaign_proto_init() }
@@ -1907,7 +2003,7 @@ func file_proto_Campaign_type_campaign_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_Campaign_type_campaign_proto_rawDesc), len(file_proto_Campaign_type_campaign_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

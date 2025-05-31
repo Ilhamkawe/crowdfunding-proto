@@ -48,7 +48,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CampaignServiceClient interface {
-	GetRewards(ctx context.Context, in *SendIDRequest, opts ...grpc.CallOption) (*CampaignReward, error)
+	GetRewards(ctx context.Context, in *SendIDRequest, opts ...grpc.CallOption) (*ListCampaignReward, error)
 	SearchCampaign(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListCampaign, error)
 	Limit(ctx context.Context, in *SendLimitRequest, opts ...grpc.CallOption) (*ListCampaign, error)
 	GetCampaigns(ctx context.Context, in *SendUserIDRequest, opts ...grpc.CallOption) (*ListCampaign, error)
@@ -80,9 +80,9 @@ func NewCampaignServiceClient(cc grpc.ClientConnInterface) CampaignServiceClient
 	return &campaignServiceClient{cc}
 }
 
-func (c *campaignServiceClient) GetRewards(ctx context.Context, in *SendIDRequest, opts ...grpc.CallOption) (*CampaignReward, error) {
+func (c *campaignServiceClient) GetRewards(ctx context.Context, in *SendIDRequest, opts ...grpc.CallOption) (*ListCampaignReward, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CampaignReward)
+	out := new(ListCampaignReward)
 	err := c.cc.Invoke(ctx, CampaignService_GetRewards_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -304,7 +304,7 @@ func (c *campaignServiceClient) FindAllCattegory(ctx context.Context, in *emptyp
 // All implementations should embed UnimplementedCampaignServiceServer
 // for forward compatibility.
 type CampaignServiceServer interface {
-	GetRewards(context.Context, *SendIDRequest) (*CampaignReward, error)
+	GetRewards(context.Context, *SendIDRequest) (*ListCampaignReward, error)
 	SearchCampaign(context.Context, *emptypb.Empty) (*ListCampaign, error)
 	Limit(context.Context, *SendLimitRequest) (*ListCampaign, error)
 	GetCampaigns(context.Context, *SendUserIDRequest) (*ListCampaign, error)
@@ -335,7 +335,7 @@ type CampaignServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCampaignServiceServer struct{}
 
-func (UnimplementedCampaignServiceServer) GetRewards(context.Context, *SendIDRequest) (*CampaignReward, error) {
+func (UnimplementedCampaignServiceServer) GetRewards(context.Context, *SendIDRequest) (*ListCampaignReward, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRewards not implemented")
 }
 func (UnimplementedCampaignServiceServer) SearchCampaign(context.Context, *emptypb.Empty) (*ListCampaign, error) {
